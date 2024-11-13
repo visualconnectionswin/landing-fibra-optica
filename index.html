@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio de Fibra Óptica</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
+        h1 { color: #333; }
+        form { display: flex; flex-direction: column; }
+        input, button { margin: 10px 0; padding: 10px; font-size: 16px; }
+        button { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Obtén tu servicio de Fibra Óptica</h1>
+    <p>Ingresa tus datos para más información:</p>
+    <form id="contactForm">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="tel" name="phone" placeholder="Número de Teléfono" required>
+        <input type="hidden" id="identifier" name="identifier" value="">
+        <button type="submit">Enviar</button>
+    </form>
+    <p id="responseMessage"></p>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('identifier').value = urlParams.get('id') || 'sin-identificador';
+        
+        document.getElementById('contactForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const response = await fetch('https://script.google.com/macros/s/AKfycbw71riWIvhCB-erTfdoGJ47P5_qP8552ljYcDifVZGF72jp1ziBReUOIF_kDfGktV4Mdg/exec', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('responseMessage').innerText = result.message;
+            e.target.reset();
+        };
+    </script>
+</body>
+</html>
