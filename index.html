@@ -43,7 +43,8 @@
                     </ul>
                 </div>
 
-                <form id="contactForm" class="space-y-4">
+                <!-- Formulario con método tradicional -->
+                <form id="contactForm" target="hidden_iframe" method="POST" class="space-y-4">
                     <input type="hidden" id="source" name="source">
                     <input type="hidden" id="advisor" name="advisor">
                     <input type="hidden" id="location" name="location">
@@ -57,7 +58,8 @@
                     <div>
                         <label for="phone" class="block text-gray-700 mb-2">Número de teléfono</label>
                         <input type="tel" id="phone" name="phone" required
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                            pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
                     </div>
 
                     <button type="submit"
@@ -65,6 +67,8 @@
                         Solicitar información
                     </button>
                 </form>
+                <!-- iframe oculto para el envío del formulario -->
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
             </div>
         </main>
 
@@ -84,8 +88,16 @@
             document.getElementById('advisor').value = urlParams.get('advisor') || '';
             document.getElementById('location').value = urlParams.get('location') || '';
 
+            // Configurar el formulario
+            const form = document.getElementById('contactForm');
+            const iframe = document.getElementById('hidden_iframe');
+            
+            // URL del Web App de Google Scripts
+            const scriptURL = 'TU_URL_DE_GOOGLE_SCRIPT_AQUÍ';
+            form.action = scriptURL;
+
             // Manejar el envío del formulario
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 const formData = new FormData(this);
@@ -98,28 +110,38 @@
                     location: formData.get('location')
                 };
 
-                // URL del Web App de Google Scripts (deberás reemplazar esta URL)
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbw71riWIvhCB-erTfdoGJ47P5_qP8552ljYcDifVZGF72jp1ziBReUOIF_kDfGktV4Mdg/exec';
+                // Crear input oculto para los datos JSON
+                let dataInput = form.querySelector('input[name="data"]');
+                if (!dataInput) {
+                    dataInput = document.createElement('input');
+                    dataInput.type = 'hidden';
+                    dataInput.name = 'data';
+                    form.appendChild(dataInput);
+                }
+                dataInput.value = JSON.stringify(data);
 
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
-                        this.reset();
-                    } else {
-                        throw new Error('Error en el envío');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+                // Mostrar mensaje de carga
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Enviando...';
+
+                // Manejar la respuesta del iframe
+                iframe.onload = function() {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalText;
+                    alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
+                    form.reset();
+                };
+
+                iframe.onerror = function() {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalText;
                     alert('Hubo un error al enviar tus datos. Por favor, intenta nuevamente.');
-                });
+                };
+
+                // Enviar el formulario
+                form.submit();
             });
         });
     </script>
