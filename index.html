@@ -12,7 +12,7 @@
         <header class="bg-blue-600 text-white py-6">
             <div class="container mx-auto px-4">
                 <h1 class="text-3xl font-bold text-center">Internet Fibra Óptica</h1>
-                <p class="text-center mt-2">La mejor velocidad para tu hogar!</p>
+                <p class="text-center mt-2">La mejor velocidad para tu hogar</p>
             </div>
         </header>
 
@@ -81,69 +81,53 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Obtener parámetros de la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            document.getElementById('source').value = urlParams.get('source') || '';
-            document.getElementById('advisor').value = urlParams.get('advisor') || '';
-            document.getElementById('location').value = urlParams.get('location') || '';
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById('source').value = urlParams.get('source') || '';
+    document.getElementById('advisor').value = urlParams.get('advisor') || '';
+    document.getElementById('location').value = urlParams.get('location') || '';
 
-            // Configurar el formulario
-            const form = document.getElementById('contactForm');
-            const iframe = document.getElementById('hidden_iframe');
-            
-            // URL del Web App de Google Scripts
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbw71riWIvhCB-erTfdoGJ47P5_qP8552ljYcDifVZGF72jp1ziBReUOIF_kDfGktV4Mdg/exec';
-            form.action = scriptURL;
+    // Manejar el envío del formulario
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = {
+            timestamp: new Date().toISOString(),
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            source: formData.get('source'),
+            advisor: formData.get('advisor'),
+            location: formData.get('location')
+        };
 
-            // Manejar el envío del formulario
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(this);
-                const data = {
-                    timestamp: new Date().toISOString(),
-                    name: formData.get('name'),
-                    phone: formData.get('phone'),
-                    source: formData.get('source'),
-                    advisor: formData.get('advisor'),
-                    location: formData.get('location')
-                };
+        // URL del Web App de Google Scripts
+        const scriptURL = 'TU_NUEVA_URL_AQUÍ';
 
-                // Crear input oculto para los datos JSON
-                let dataInput = form.querySelector('input[name="data"]');
-                if (!dataInput) {
-                    dataInput = document.createElement('input');
-                    dataInput.type = 'hidden';
-                    dataInput.name = 'data';
-                    form.appendChild(dataInput);
-                }
-                dataInput.value = JSON.stringify(data);
+        console.log('Enviando datos:', data);
 
-                // Mostrar mensaje de carga
-                const submitButton = form.querySelector('button[type="submit"]');
-                const originalText = submitButton.innerHTML;
-                submitButton.disabled = true;
-                submitButton.innerHTML = 'Enviando...';
-
-                // Manejar la respuesta del iframe
-                iframe.onload = function() {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalText;
-                    alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
-                    form.reset();
-                };
-
-                iframe.onerror = function() {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalText;
-                    alert('Hubo un error al enviar tus datos. Por favor, intenta nuevamente.');
-                };
-
-                // Enviar el formulario
-                form.submit();
-            });
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            mode: 'no-cors', // Importante para evitar errores CORS
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            console.log('Respuesta recibida:', response);
+            alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un error al enviar tus datos. Por favor, intenta nuevamente.');
         });
-    </script>
+    });
+});
+</script>
+
+    
 </body>
 </html>
