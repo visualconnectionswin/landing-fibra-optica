@@ -3,110 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WinTV - Contratación</title>
+    <title>Internet Fibra Óptica - Alta Velocidad</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Estilos personalizados */
-        .bg-orange {
-            background-color: #ff5a00;
-        }
-        .form-container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .hero-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-    </style>
 </head>
-<body class="bg-orange">
-    <div class="min-h-screen flex items-center justify-center">
-        <!-- Sección principal -->
-        <div class="relative max-w-screen-lg mx-auto flex items-center">
-            <!-- Texto e imagen -->
-            <div class="flex-1 text-white p-8">
-                <h1 class="hero-text text-center md:text-left">
-                    SOLO LLENA LOS SIGUIENTES <br>
-                    DATOS Y PODRÁS DISFRUTAR DE <br>
-                    LA NUEVA FORMA DE VER TV
-                </h1>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-blue-600 text-white py-6">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl font-bold text-center">Win Internet Fibra Óptica</h1>
+                <p class="text-center mt-2">La mejor velocidad para tu hogar</p>
             </div>
-            <!-- Formulario flotante -->
-            <div class="form-container flex-1 p-4 max-w-sm mx-auto">
-                <!-- Formulario -->
-                <form id="contactForm" target="hidden_iframe" method="POST" class="space-y-4">                    
-                    <input type="text" name="nombre" placeholder="Nombre completo del titular" required
-                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500">
-                    <input type="text" name="dni" placeholder="DNI del titular" required
-                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500">
-                    <input type="tel" name="celular" placeholder="Celular" required
-                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500"
-                           pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
-                    <input type="email" name="correo" placeholder="Correo" required
-                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500">
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">¡Obtén la mejor conexión!</h2>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Alta velocidad garantizada
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Instalación gratuita
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Soporte 24/7
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Formulario con método tradicional -->
+                <form id="contactForm" target="hidden_iframe" method="POST" class="space-y-4">
+                    <input type="hidden" id="source" name="source">
+                    <input type="hidden" id="advisor" name="advisor">
+                    <input type="hidden" id="location" name="location">
+                    
                     <div>
-                        <label class="block text-gray-600 text-sm">
-                            <input type="checkbox" required> Autorizo el tratamiento de mis Datos personales
-                        </label>
+                        <label for="name" class="block text-gray-700 mb-2">Nombre completo</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
                     </div>
+                    
                     <div>
-                        <label class="block text-gray-600 text-sm">
-                            <input type="checkbox"> Quiero recibir promociones y beneficios de Win
-                        </label>
+                        <label for="phone" class="block text-gray-700 mb-2">Número de teléfono</label>
+                        <input type="tel" id="phone" name="phone" required
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                            pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
                     </div>
+
                     <button type="submit"
-                            class="w-full bg-orange text-white py-2 rounded-lg hover:bg-orange-600 transition duration-200">
-                        ¡Quiero contratar!
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+                        Solicitar información
                     </button>
                 </form>
                 <!-- iframe oculto para el envío del formulario -->
                 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
             </div>
-        </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-4">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2024 Servicio de Fibra Óptica. Todos los derechos reservados.</p>
+            </div>
+        </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Obtener parámetros de la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            document.getElementById('source').value = urlParams.get('source') || '';
-            document.getElementById('advisor').value = urlParams.get('advisor') || '';
-            document.getElementById('location').value = urlParams.get('location') || '';
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById('source').value = urlParams.get('source') || '';
+    document.getElementById('advisor').value = urlParams.get('advisor') || '';
+    document.getElementById('location').value = urlParams.get('location') || '';
 
-            // Manejar el envío del formulario
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
+    // Manejar el envío del formulario
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = {
+            timestamp: new Date().toISOString(),
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            source: formData.get('source'),
+            advisor: formData.get('advisor'),
+            location: formData.get('location')
+        };
 
-                const formData = new FormData(this);
-                const data = {
-                    timestamp: new Date().toISOString(),
-                    dni: formData.get('dni'),
-                    nombre: formData.get('nombre'),
-                    celular: formData.get('celular'),
-                    correo: formData.get('correo')
-                };
+        // URL del Web App de Google Scripts
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyWqjppt1SD6NaDZhGyTodY4hNN2Qqb434Zj1U1Wc8IY_k02i4hIhZ4efouoaOApsoN_Q/exec';
 
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbyWqjppt1SD6NaDZhGyTodY4hNN2Qqb434Zj1U1Wc8IY_k02i4hIhZ4efouoaOApsoN_Q/exec';
+        console.log('Enviando datos:', data);
 
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' }
-                })
-                .then(response => {
-                    alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
-                    this.reset();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al enviar tus datos. Por favor, intenta nuevamente.');
-                });
-            });
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            mode: 'no-cors', // Importante para evitar errores CORS
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            console.log('Respuesta recibida:', response);
+            alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un error al enviar tus datos. Por favor, intenta nuevamente.');
         });
-    </script>
+    });
+});
+</script>
+
+    
 </body>
 </html>
