@@ -3,93 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internet WIN Fibra Óptica - 100% Conexión Garantizada</title>
+    <title>Win Fibra Óptica - Alta Velocidad</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(to bottom, #000, #333);
-        }
         .floating-form {
-            background: #000;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid #ff5a00;
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: #ff5a00;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
-        .btn-orange {
-            background-color: #ff5a00;
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: #fff;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .btn-orange:hover {
-            background-color: #e65100;
+        .whatsapp-btn:hover {
+            background: #20b957;
         }
     </style>
 </head>
-<body class="text-white">
-    <!-- Header -->
-    <header class="py-8">
+<body class="bg-gray-900 text-white">
+    <header class="bg-black py-6">
         <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-4">WIN Fibra Óptica Nº1 del Perú</h1>
-            <p class="text-xl">100% Fibra Óptica | Nº1 en satisfacción de clientes</p>
+            <h1 class="text-3xl font-bold">WIN Fibra Óptica</h1>
+            <p class="mt-2 text-lg">Número 1 en satisfacción de clientes</p>
         </div>
     </header>
 
-    <!-- Main Section -->
-    <main class="container mx-auto px-4 relative">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">¡Conéctate con la mejor velocidad!</h2>
-            <p class="text-lg">Promociones exclusivas y la mayor velocidad en tu hogar u oficina.</p>
-        </div>
-
-        <!-- Formulario flotante -->
-        <div class="floating-form max-w-md mx-auto rounded-lg p-6 relative">
-            <h3 class="text-2xl font-bold text-center mb-4 text-white">Déjanos tus datos</h3>
-            <p class="text-sm text-gray-400 text-center mb-6">Nos pondremos en contacto de inmediato</p>
-
-            <form id="contactForm" target="hidden_iframe" method="POST" class="space-y-4">
-                <div>
-                    <label for="name" class="block text-gray-300 mb-2">Nombre completo</label>
-                    <input type="text" id="name" name="name" required
-                        class="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-900 text-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                </div>
-                <div>
-                    <label for="phone" class="block text-gray-300 mb-2">Número de teléfono</label>
-                    <input type="tel" id="phone" name="phone" required
-                        class="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-900 text-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                        pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
-                </div>
-                <p class="text-xs text-gray-400 text-center">
-                    Tus datos están protegidos. Al hacer clic en “Contactarme” aceptas nuestras <a href="#" class="text-orange-400 underline">Políticas de privacidad</a>.
-                </p>
-                <button type="submit"
-                    class="w-full btn-orange text-white py-2 px-4 rounded-lg font-semibold hover:bg-orange-600 transition duration-300">
-                    Contactarme
-                </button>
-            </form>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        </div>
+    <main class="container mx-auto py-12 px-4">
+        <section class="text-center">
+            <h2 class="text-4xl font-bold text-white">La conexión más rápida de Perú</h2>
+            <p class="mt-4 text-lg">Internet 100% fibra óptica. Conéctate con mayor velocidad y grandes promociones.</p>
+        </section>
+        <section class="mt-8 text-center">
+            <div class="bg-white rounded-lg shadow-lg p-8 text-gray-800 max-w-lg mx-auto">
+                <h3 class="text-2xl font-bold text-center">Beneficios</h3>
+                <ul class="mt-4 text-left space-y-3">
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-2">✔</span> Alta velocidad garantizada.
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-2">✔</span> Instalación gratuita.
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-2">✔</span> Soporte 24/7.
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black text-gray-400 py-4">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 Fibra Nº1 del Perú. Todos los derechos reservados.</p>
-        </div>
+    <!-- Formulario flotante -->
+    <div class="floating-form">
+        <h4 class="text-xl font-bold mb-4">¡Déjanos tus datos!</h4>
+        <form id="contactForm" target="hidden_iframe" method="POST" class="space-y-4">
+            <input type="hidden" id="source" name="source">
+            <input type="hidden" id="advisor" name="advisor">
+            <input type="hidden" id="location" name="location">
+            
+            <div>
+                <label for="name" class="block text-sm mb-1">Nombre completo</label>
+                <input type="text" id="name" name="name" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none text-gray-800">
+            </div>
+            
+            <div>
+                <label for="phone" class="block text-sm mb-1">Número de teléfono</label>
+                <input type="tel" id="phone" name="phone" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none text-gray-800"
+                    pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
+            </div>
+
+            <button type="submit"
+                class="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                Contactarme
+            </button>
+        </form>
+        <p class="text-sm mt-2 text-gray-200">
+            Tus datos están protegidos. Al hacer clic en “Contactarme” aceptas nuestras <a href="#" class="underline">políticas de privacidad</a>.
+        </p>
+    </div>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/51924851312" class="whatsapp-btn">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp" width="30">
+    </a>
+
+    <footer class="bg-black py-4 text-center">
+        <p class="text-sm text-gray-400">&copy; 2024 WIN Fibra Óptica. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactForm');
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(form);
-                const data = {
-                    name: formData.get('name'),
-                    phone: formData.get('phone'),
-                };
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-                console.log('Datos enviados:', data);
-                alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
-                form.reset();
-            });
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById('source').value = urlParams.get('source') || '';
+            document.getElementById('advisor').value = urlParams.get('advisor') || '';
+            document.getElementById('location').value = urlParams.get('location') || '';
         });
     </script>
 </body>
