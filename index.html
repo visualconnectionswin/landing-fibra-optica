@@ -3,120 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win Fibra Óptica - Alta Velocidad</title>
+    <title>Win Fibra Óptica - Conéctate al Futuro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                        url('https://via.placeholder.com/1920x1080?text=Fibra+Óptica') no-repeat center center;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+        }
+
         .floating-form {
             position: fixed;
             top: 50%;
             right: 20px;
             transform: translateY(-50%);
-            z-index: 1000;
             background: #ff5a00;
-            color: #fff;
+            color: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            width: 320px;
         }
+
+        .cta-button {
+            background: #ff5a00;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #e14900;
+        }
+
         .whatsapp-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: #25d366;
-            color: #fff;
-            padding: 15px;
+            color: white;
             border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            padding: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 10;
         }
+
         .whatsapp-btn:hover {
             background: #20b957;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
-    <header class="bg-black py-6">
-        <div class="container mx-auto text-center">
-            <h1 class="text-3xl font-bold">WIN Fibra Óptica</h1>
-            <p class="mt-2 text-lg">Número 1 en satisfacción de clientes</p>
-        </div>
-    </header>
 
-    <main class="container mx-auto py-12 px-4">
-        <section class="text-center">
-            <h2 class="text-4xl font-bold text-white">La conexión más rápida de Perú</h2>
-            <p class="mt-4 text-lg">Internet 100% fibra óptica. Conéctate con mayor velocidad y grandes promociones.</p>
-        </section>
-        <section class="mt-8 text-center">
-            <div class="bg-white rounded-lg shadow-lg p-8 text-gray-800 max-w-lg mx-auto">
-                <h3 class="text-2xl font-bold text-center">Beneficios</h3>
-                <ul class="mt-4 text-left space-y-3">
-                    <li class="flex items-center">
-                        <span class="text-green-500 mr-2">✔</span> Alta velocidad garantizada.
-                    </li>
-                    <li class="flex items-center">
-                        <span class="text-green-500 mr-2">✔</span> Instalación gratuita.
-                    </li>
-                    <li class="flex items-center">
-                        <span class="text-green-500 mr-2">✔</span> Soporte 24/7.
-                    </li>
-                </ul>
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center">
+        <div class="text-center px-6">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Conéctate al Futuro con WIN</h1>
+            <p class="text-lg md:text-2xl mb-6">100% Fibra Óptica, la mejor velocidad y promociones inigualables.</p>
+            <a href="#contactForm" class="cta-button">Solicitar Información</a>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-12 bg-gray-800">
+        <div class="container mx-auto text-center px-6">
+            <h2 class="text-3xl font-bold mb-6">¿Por qué elegir WIN Fibra Óptica?</h2>
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2">Alta Velocidad</h3>
+                    <p>Conéctate a una velocidad superior sin interrupciones.</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2">Instalación Gratuita</h3>
+                    <p>Nos encargamos de todo para que tú disfrutes.</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2">Soporte 24/7</h3>
+                    <p>Siempre disponibles para atender tus necesidades.</p>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Formulario flotante -->
     <div class="floating-form">
-        <h4 class="text-xl font-bold mb-4">¡Déjanos tus datos!</h4>
-        <form id="contactForm" target="hidden_iframe" method="POST" class="space-y-4">
-            <input type="hidden" id="source" name="source">
-            <input type="hidden" id="advisor" name="advisor">
-            <input type="hidden" id="location" name="location">
-            
-            <div>
-                <label for="name" class="block text-sm mb-1">Nombre completo</label>
+        <h3 class="text-2xl font-bold mb-4">¡Déjanos tus datos!</h3>
+        <form id="contactForm" method="POST" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
+            <div class="mb-4">
+                <label for="name" class="block text-sm mb-2">Nombre completo</label>
                 <input type="text" id="name" name="name" required
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none text-gray-800">
+                    class="w-full px-3 py-2 rounded text-gray-900 focus:outline-none">
             </div>
-            
-            <div>
-                <label for="phone" class="block text-sm mb-1">Número de teléfono</label>
+            <div class="mb-4">
+                <label for="phone" class="block text-sm mb-2">Número de teléfono</label>
                 <input type="tel" id="phone" name="phone" required
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none text-gray-800"
-                    pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
+                    class="w-full px-3 py-2 rounded text-gray-900 focus:outline-none"
+                    pattern="[0-9]{9}" title="Número válido de 9 dígitos">
             </div>
-
-            <button type="submit"
-                class="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+            <button type="submit" class="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800">
                 Contactarme
             </button>
         </form>
-        <p class="text-sm mt-2 text-gray-200">
-            Tus datos están protegidos. Al hacer clic en “Contactarme” aceptas nuestras <a href="#" class="underline">políticas de privacidad</a>.
-        </p>
+        <p class="text-sm mt-4">Tus datos están protegidos. Al hacer clic aceptas nuestras <a href="#" class="underline">políticas de privacidad</a>.</p>
     </div>
 
-    <!-- Botón de WhatsApp -->
+    <!-- WhatsApp Button -->
     <a href="https://wa.me/51924851312" class="whatsapp-btn">
         <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp" width="30">
     </a>
 
+    <!-- Footer -->
     <footer class="bg-black py-4 text-center">
-        <p class="text-sm text-gray-400">&copy; 2024 WIN Fibra Óptica. Todos los derechos reservados.</p>
+        <p>&copy; 2024 WIN Fibra Óptica. Todos los derechos reservados.</p>
     </footer>
 
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            document.getElementById('source').value = urlParams.get('source') || '';
-            document.getElementById('advisor').value = urlParams.get('advisor') || '';
-            document.getElementById('location').value = urlParams.get('location') || '';
-        });
-    </script>
 </body>
 </html>
