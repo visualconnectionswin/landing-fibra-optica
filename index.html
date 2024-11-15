@@ -3,117 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WIN Fibra Óptica - Alta Velocidad</title>
+    <title>WIN Fibra Óptica - Conexión Rápida</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #000;
-            color: #fff;
+            background: linear-gradient(135deg, #1a1a1a, #ff5a00);
             font-family: 'Arial', sans-serif;
-        }
-
-        .cta-button {
-            background-color: #ff5a00;
             color: #fff;
-            font-size: 1rem;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 8px;
+        }
+        .header {
             text-align: center;
-            transition: background 0.3s;
+            padding: 20px 10px;
         }
-
-        .cta-button:hover {
-            background-color: #e04e00;
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
-
-        .floating-whatsapp {
+        .form-container h2 {
+            color: #1a1a1a;
+        }
+        .button-primary {
+            background: #ff5a00;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .button-primary:hover {
+            background: #e25000;
+        }
+        .whatsapp-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25d366;
-            width: 60px;
-            height: 60px;
+            background: #25d366;
+            padding: 15px;
             border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
             z-index: 1000;
         }
-
-        .floating-whatsapp img {
+        .whatsapp-btn img {
             width: 30px;
             height: 30px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body>
-    <!-- Contenedor principal -->
-    <div class="flex flex-col items-center justify-center min-h-screen px-4">
-        <!-- Header -->
-        <header class="text-center mb-6">
-            <h1 class="text-3xl font-bold text-white">WIN Fibra Óptica</h1>
-            <p class="mt-2 text-lg text-gray-300">La conexión más rápida de Perú</p>
-        </header>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="text-3xl font-bold">WIN Fibra Óptica</h1>
+        <p class="mt-2">Conéctate con la mejor velocidad y promociones</p>
+    </header>
 
-        <!-- Contenido principal -->
-        <main class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
-            <h2 class="text-2xl font-bold text-center text-gray-800">¡Conéctate con nosotros!</h2>
-            <p class="text-center text-gray-600 mt-2">
-                Disfruta de 100% fibra óptica, mayor velocidad y promociones exclusivas.
-            </p>
-            <ul class="mt-4 space-y-3 text-gray-700">
-                <li class="flex items-center">
-                    <span class="text-green-500 font-bold mr-2">✔</span> Alta velocidad garantizada.
-                </li>
-                <li class="flex items-center">
-                    <span class="text-green-500 font-bold mr-2">✔</span> Instalación gratuita.
-                </li>
-                <li class="flex items-center">
-                    <span class="text-green-500 font-bold mr-2">✔</span> Soporte técnico 24/7.
-                </li>
-            </ul>
-
-            <!-- Formulario -->
-            <form id="contactForm" method="POST" class="mt-6 space-y-4">
-                <div>
-                    <label for="name" class="block text-gray-700 text-sm font-semibold">Nombre completo</label>
-                    <input type="text" id="name" name="name" required
-                        class="w-full px-4 py-2 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500">
-                </div>
-                <div>
-                    <label for="phone" class="block text-gray-700 text-sm font-semibold">Teléfono</label>
-                    <input type="tel" id="phone" name="phone" required
-                        class="w-full px-4 py-2 border rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                        pattern="[0-9]{9}" title="Ingresa un número válido de 9 dígitos">
-                </div>
-                <button type="submit" class="cta-button w-full">Solicitar información</button>
-            </form>
-
-            <p class="text-center text-sm text-gray-500 mt-4">
-                Al enviar, aceptas nuestras <a href="#" class="underline text-orange-500">políticas de privacidad</a>.
-            </p>
-        </main>
+    <!-- Formulario -->
+    <div class="form-container">
+        <h2 class="text-xl font-bold">Déjanos tus datos</h2>
+        <p class="text-sm mt-1 mb-3">Nos pondremos en contacto de inmediato.</p>
+        <form id="contactForm" method="POST">
+            <input type="hidden" id="source" name="source">
+            <input type="hidden" id="advisor" name="advisor">
+            <input type="hidden" id="location" name="location">
+            
+            <div class="mb-3">
+                <label for="name" class="block text-sm font-semibold mb-1 text-gray-800">Nombre completo</label>
+                <input type="text" id="name" name="name" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none text-gray-800">
+            </div>
+            
+            <div class="mb-3">
+                <label for="phone" class="block text-sm font-semibold mb-1 text-gray-800">Número de teléfono</label>
+                <input type="tel" id="phone" name="phone" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none text-gray-800"
+                    pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
+            </div>
+            
+            <button type="submit" class="button-primary w-full">Contactarme</button>
+        </form>
+        <p class="text-xs mt-3 text-gray-500">Tus datos están 100% protegidos. Al hacer clic aceptas nuestras <a href="#" class="underline">políticas de privacidad</a>.</p>
     </div>
 
-    <!-- Botón de WhatsApp flotante -->
-    <a href="https://wa.me/51924851312" class="floating-whatsapp">
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/51924851312" class="whatsapp-btn">
         <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
     </a>
 
-    <!-- Script del formulario -->
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 WIN Fibra Óptica. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script -->
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById('source').value = urlParams.get('source') || '';
+            document.getElementById('advisor').value = urlParams.get('advisor') || '';
+            document.getElementById('location').value = urlParams.get('location') || '';
 
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
+            document.getElementById('contactForm').addEventListener('submit', function (e) {
+                e.preventDefault();
 
-            console.log('Datos enviados:', { name, phone });
+                const formData = new FormData(this);
+                const data = {
+                    timestamp: new Date().toISOString(),
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    source: formData.get('source'),
+                    advisor: formData.get('advisor'),
+                    location: formData.get('location')
+                };
 
-            alert('¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.');
-            this.reset();
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbyWqjppt1SD6NaDZhGyTodY4hNN2Qqb434Zj1U1Wc8IY_k02i4hIhZ4efouoaOApsoN_Q/exec';
+
+                console.log('Enviando datos:', data);
+
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    console.log('Respuesta recibida:', response);
+                    alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
+                    this.reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un error al enviar tus datos. Por favor, intenta nuevamente.');
+                });
+            });
         });
     </script>
 </body>
