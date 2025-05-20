@@ -3,166 +3,882 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WIN Fibra Óptica - Conexión Rápida</title>
+    <title>WIN Fibra Óptica - Internet Ultra Rápido | Oferta Exclusiva</title>
+    <meta name="description" content="Conéctate a la red más rápida de fibra óptica con WIN. Promociones exclusivas por tiempo limitado. ¡Solicita información ahora!">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary: #ff5a00;
+            --primary-dark: #e25000;
+            --accent: #25d366;
+            --dark: #1a1a1a;
+            --light: #ffffff;
+        }
+        
         body {
-            background: linear-gradient(135deg, #1a1a1a, #ff5a00);
-            font-family: 'Arial', sans-serif;
-            color: #fff;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
-        .header {
-            text-align: center;
-            padding: 20px 10px;
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            position: relative;
+            overflow: hidden;
         }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1200/800') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
         .form-container {
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 10;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .testimonial-card {
+            background: white;
             border-radius: 12px;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            margin: 20px auto;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .form-container h2 {
-            color: #1a1a1a;
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        .button-primary {
-            background: #ff5a00;
-            color: #fff;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-align: center;
-            margin-top: 15px;
+        
+        .feature-card {
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
-        .button-primary:hover {
-            background: #e25000;
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            padding: 15px;
+        
+        .feature-icon {
+            background: rgba(255, 90, 0, 0.1);
+            color: var(--primary);
             border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 90, 0, 0.3);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn-primary:hover::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .countdown-timer {
+            background: rgba(255, 90, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .timer-box {
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 24px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        
+        .floating-whatsapp:hover {
+            background-color: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+        
+        .badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .trust-icons {
             display: flex;
             justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .whatsapp-btn img {
-            width: 30px;
-            height: 30px;
-        }
-        .footer {
-            text-align: center;
             margin-top: 20px;
+            gap: 30px;
+        }
+        
+        .trust-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .trust-icon i {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .price-tag {
+            color: var(--primary);
+            font-size: 42px;
+            font-weight: 700;
+            margin: 10px 0;
+            line-height: 1;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 24px;
+        }
+        
+        .label-best-seller {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(255, 90, 0, 0.3);
+        }
+        
+        .faq-question {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+        }
+        
+        .faq-question.active .faq-answer {
+            max-height: 500px;
+            padding: 15px 20px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            width: 85%;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .form-container {
+                padding: 20px;
+            }
+            
+            .testimonial-slider {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .trust-icons {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .floating-whatsapp span {
+                display: none;
+            }
+            
+            .floating-whatsapp {
+                padding: 15px;
+                border-radius: 50%;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <h1 class="text-3xl font-bold">WIN Fibra Óptica</h1>
-        <p class="mt-2">Conéctate con la mejor velocidad y promociones</p>
-    </header>
-
-    <!-- Formulario -->
-    <div class="form-container">
-        <h2 class="text-xl font-bold">Déjanos tus datos</h2>
-        <p class="text-sm mt-1 mb-3">Nos pondremos en contacto de inmediato.</p>
-        <form id="contactForm" method="POST">
-            <input type="hidden" id="source" name="source">
-            <input type="hidden" id="advisor" name="advisor">
-            <input type="hidden" id="location" name="location">
-            
-            <div class="mb-3">
-                <label for="name" class="block text-sm font-semibold mb-1 text-gray-800">Nombre completo</label>
-                <input type="text" id="name" name="name" required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none text-gray-800">
+    <!-- Sección Hero -->
+    <section class="hero-section py-10 md:py-20 px-4 relative">
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="flex flex-col md:flex-row gap-10">
+                <!-- Contenido principal -->
+                <div class="w-full md:w-7/12 hero-content text-white">
+                    <div class="badge pulse">¡OFERTA EXCLUSIVA!</div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-5">Internet Fibra Óptica <span class="text-yellow-300">WIN</span> a Máxima Velocidad</h1>
+                    <p class="text-lg md:text-xl mb-6">Navega a velocidades <span class="font-bold">increíbles</span> con nuestra tecnología de fibra óptica más avanzada. Ideal para gaming, streaming, trabajo remoto y más.</p>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 items-center mb-8">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fas fa-check-circle text-yellow-300 text-xl"></i>
+                            <span class="font-medium">Instalación GRATIS</span>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fas fa-check-circle text-yellow-300 text-xl"></i>
+                            <span class="font-medium">Velocidad Simétrica</span>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fas fa-check-circle text-yellow-300 text-xl"></i>
+                            <span class="font-medium">Soporte 24/7</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <p class="font-semibold text-yellow-300 mb-2">¡OFERTA POR TIEMPO LIMITADO!</p>
+                        <div class="countdown-timer flex gap-3 mb-4">
+                            <div class="flex flex-col items-center">
+                                <div class="timer-box" id="days">02</div>
+                                <span class="text-sm mt-1">Días</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="timer-box" id="hours">23</div>
+                                <span class="text-sm mt-1">Horas</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="timer-box" id="minutes">45</div>
+                                <span class="text-sm mt-1">Min</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="timer-box" id="seconds">12</div>
+                                <span class="text-sm mt-1">Seg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="bg-white rounded-full p-1">
+                                <img src="/api/placeholder/60/60" alt="Certificación de Calidad" class="rounded-full w-12 h-12">
+                            </div>
+                            <div>
+                                <p class="font-bold">Certificado de Calidad</p>
+                                <p class="text-sm">Velocidad garantizada por OSIPTEL</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="flex -space-x-4">
+                                <img src="/api/placeholder/50/50" alt="Cliente Satisfecho" class="rounded-full w-10 h-10 border-2 border-white">
+                                <img src="/api/placeholder/50/50" alt="Cliente Satisfecho" class="rounded-full w-10 h-10 border-2 border-white">
+                                <img src="/api/placeholder/50/50" alt="Cliente Satisfecho" class="rounded-full w-10 h-10 border-2 border-white">
+                            </div>
+                            <div>
+                                <p class="font-bold">+10,000 clientes satisfechos</p>
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-300">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="ml-2">4.9/5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formulario de contacto -->
+                <div class="w-full md:w-5/12">
+                    <div class="form-container p-6 md:p-8">
+                        <span class="label-best-seller">MÁS POPULAR</span>
+                        <h2 class="text-2xl font-bold text-gray-800">Reserva tu instalación ahora</h2>
+                        <p class="text-gray-600 mb-4">Complete el formulario y un asesor te contactará de inmediato</p>
+                        
+                        <div class="mb-6 text-center">
+                            <p class="text-sm text-gray-500 mb-1">Precio normal</p>
+                            <span class="old-price">S/ 159.90</span>
+                            <div class="price-tag">S/ 89.90<span class="text-sm font-normal">/mes</span></div>
+                            <p class="text-green-600 font-semibold">¡AHORRAS S/ 70 MENSUALES!</p>
+                        </div>
+                        
+                        <form id="contactForm" method="POST" class="space-y-4">
+                            <input type="hidden" id="source" name="source">
+                            <input type="hidden" id="advisor" name="advisor">
+                            <input type="hidden" id="location" name="location">
+                            
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Número de teléfono</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                                    pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
+                            </div>
+                            
+                            <div>
+                                <label for="distrito" class="block text-sm font-medium text-gray-700 mb-1">Distrito</label>
+                                <select id="distrito" name="distrito" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all">
+                                    <option value="">Selecciona tu distrito</option>
+                                    <option value="San Isidro">San Isidro</option>
+                                    <option value="Miraflores">Miraflores</option>
+                                    <option value="San Borja">San Borja</option>
+                                    <option value="Surco">Surco</option>
+                                    <option value="La Molina">La Molina</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary w-full flex items-center justify-center gap-2">
+                                <i class="fas fa-bolt"></i>
+                                <span>¡QUIERO ESTA OFERTA AHORA!</span>
+                            </button>
+                            
+                            <div class="trust-icons">
+                                <div class="trust-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Datos Seguros</span>
+                                </div>
+                                <div class="trust-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>SSL Protegido</span>
+                                </div>
+                                <div class="trust-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Garantizado</span>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs text-gray-500 text-center mt-4">Tus datos están 100% protegidos. Al hacer clic aceptas nuestras políticas de privacidad.</p>
+                        </form>
+                        
+                        <div class="mt-6">
+                            <p class="text-sm text-gray-600 flex items-center gap-2">
+                                <i class="fas fa-users text-green-600"></i>
+                                <span><span class="font-semibold">12 personas</span> solicitaron esta oferta hoy</span>
+                            </p>
+                            <div class="progress-bar mt-2">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">*Queda <span class="font-semibold">85%</span> de cupos disponibles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Beneficios -->
+    <section class="py-16 px-4 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">¿Por qué elegir WIN Fibra Óptica?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Disfruta de una conexión estable y ultrarrápida con todos estos beneficios exclusivos</p>
             </div>
             
-            <div class="mb-3">
-                <label for="phone" class="block text-sm font-semibold mb-1 text-gray-800">Número de teléfono</label>
-                <input type="tel" id="phone" name="phone" required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none text-gray-800"
-                    pattern="[0-9]{9}" title="Por favor ingresa un número de teléfono válido de 9 dígitos">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card p-6">
+                    <div class="feature-icon mx-auto md:mx-0">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Velocidad Simétrica</h3>
+                    <p class="text-gray-600">Misma velocidad de subida y bajada para que puedas transmitir, jugar y trabajar sin interrupciones.</p>
+                </div>
+                
+                <div class="feature-card p-6">
+                    <div class="feature-icon mx-auto md:mx-0">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Router WiFi 6</h3>
+                    <p class="text-gray-600">Tecnología de última generación para una cobertura completa en todo tu hogar sin puntos muertos.</p>
+                </div>
+                
+                <div class="feature-card p-6">
+                    <div class="feature-icon mx-auto md:mx-0">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Soporte Técnico 24/7</h3>
+                    <p class="text-gray-600">Asistencia técnica especializada disponible todos los días, a cualquier hora que la necesites.</p>
+                </div>
+                
+                <div class="feature-card p-6">
+                    <div class="feature-icon mx-auto md:mx-0">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Instalación Gratuita</h3>
+                    <p class="text-gray-600">Instalación profesional sin costo adicional en menos de 48 horas.</p>
+                </div>
+                
+                <div class="feature-card p-6">
+                    <div class="feature-icon mx-auto md:mx-0">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Seguridad Avanzada</h3>
+                    <p class="text-gray-600">Protección incluida contra malware y ataques cibernéticos para todos tus dispositivos.</p>
+                </div>
+                
+                <div class="feature-card p-6">
+                    <div class="feature-icon mx-auto md:mx-0">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sin Costo de Activación</h3>
+                    <p class="text-gray-600">Empieza a disfrutar de tu internet sin pagar costos adicionales de activación del servicio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Planes -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Planes diseñados para ti</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Selecciona el plan que mejor se adapte a tus necesidades de conectividad</p>
             </div>
             
-            <button type="submit" class="button-primary w-full">Contactarme</button>
-        </form>
-        <p class="text-xs mt-3 text-gray-500">Tus datos están 100% protegidos. Al hacer clic aceptas nuestras <a href="#" class="underline">políticas de privacidad</a>.</p>
-    </div>
-
-    <!-- Botón de WhatsApp -->
-<a href="https://wa.me/51924851312?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Internet%20Fibra%20%C3%B3ptica%20de%20WIN" class="whatsapp-btn">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
-    Hablar con un asesor
-</a>
-
-<!-- CSS para mejorar el estilo -->
-<style>
-    .whatsapp-btn {
-        display: inline-flex;
-        align-items: center;
-        background-color: #25d366;
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
-        border-radius: 50px;
-        padding: 10px 20px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .whatsapp-btn img {
-        margin-right: 10px;
-        width: 25px;
-        height: 25px;
-    }
-
-    .whatsapp-btn:hover {
-        background-color: #128c7e;
-    }
-</style>
-
-
-
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card p-6 relative">
+                    <h3 class="text-2xl font-bold mb-2">Plan Básico</h3>
+                    <div class="price-tag">S/ 89.90<span class="text-sm font-normal">/mes</span></div>
+                    <p class="text-gray-600 mb-6">Ideal para hogares y uso básico</p>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>100 Mbps Simétricos</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Router WiFi 6</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Hasta 10 dispositivos</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Instalación gratuita</span>
+                        </li>
+                    </ul>
+                    
+                    <button type="button" class="btn-primary w-full">Solicitar ahora</button>
+                </div>
+                
+                <div class="feature-card p-6 relative transform scale-105 border-2 border-orange-500">
+                    <span class="label-best-seller">MÁS POPULAR</span>
+                    <h3 class="text-2xl font-bold mb-2">Plan Premium</h3>
+                    <div class="price-tag">S/ 119.90<span class="text-sm font-normal">/mes</span></div>
+                    <p class="text-gray-600 mb-6">Para streaming, gaming y trabajo</p>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>200 Mbps Simétricos</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Router WiFi 6</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Hasta 15 dispositivos</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Instalación gratuita</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Seguridad avanzada</span>
+                        </li>
+                    </ul>
+                    
+                    <button type="button" class="btn-primary w-full">Solicitar ahora</button>
+                </div>
+                
+                <div class="feature-card p-6 relative">
+                    <h3 class="text-2xl font-bold mb-2">Plan Ultra</h3>
+                    <div class="price-tag">S/ 149.90<span class="text-sm font-normal">/mes</span></div>
+                    <p class="text-gray-600 mb-6">Máximo rendimiento para profesionales</p>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>400 Mbps Simétricos</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Router WiFi 6 Pro</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Dispositivos ilimitados</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Instalación prioritaria</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Seguridad avanzada</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Soporte técnico VIP</span>
+                        </li>
+                    </ul>
+                    
+                    <button type="button" class="btn-primary w-full">Solicitar ahora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Testimonios -->
+    <section class="py-16 px-4 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Lo que dicen nuestros clientes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Miles de peruanos ya disfrutan de nuestra conexión ultrarrápida</p>
+            </div>
+            
+            <div class="testimonial-slider grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-6">
+                    <div class="flex text-yellow-500 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Desde que instalé WIN, mis videojuegos no tienen lag y puedo hacer streaming sin problemas. La velocidad es increíble y el servicio al cliente es de primera."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/50/50" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-bold">Carlos Mendoza</p>
+                            <p class="text-sm text-gray-500">Cliente desde 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-6">
+                    <div class="flex text-yellow-500 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Trabajo desde casa y necesitaba una conexión estable. Con WIN puedo tener videoconferencias sin interrupciones y la velocidad de subida es excelente para compartir archivos grandes."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/50/50" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-bold">María Fernández</p>
+                            <p class="text-sm text-gray-500">Cliente desde 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-6">
+                    <div class="flex text-yellow-500 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"En casa somos 5 personas y todos usamos internet al mismo tiempo. Con WIN nunca tenemos problemas de velocidad o conexión. La instalación fue super rápida y profesional."</p>
+                    <div class="flex items-center">
+                        <img src="/api/placeholder/50/50" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-bold">Jorge Ramírez</p>
+                            <p class="text-sm text-gray-500">Cliente desde 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Preguntas Frecuentes -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Preguntas Frecuentes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Todo lo que necesitas saber sobre nuestro servicio</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="faq-question">
+                    <div class="flex justify-between items-center py-3 cursor-pointer">
+                        <h3 class="text-lg font-semibold">¿Qué diferencia hay entre fibra óptica y cable coaxial?</h3>
+                        <i class="fas fa-chevron-down text-orange-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">La fibra óptica transmite datos mediante pulsos de luz a través de cables de vidrio o plástico, ofreciendo velocidades mucho más altas y mayor estabilidad que el cable coaxial tradicional. Además, la fibra óptica proporciona velocidades simétricas (misma velocidad de subida y bajada) y es más resistente a interferencias electromagnéticas.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-question">
+                    <div class="flex justify-between items-center py-3 cursor-pointer">
+                        <h3 class="text-lg font-semibold">¿Cuánto tiempo tarda la instalación?</h3>
+                        <i class="fas fa-chevron-down text-orange-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">La instalación generalmente se realiza en un plazo de 48 horas después de la contratación del servicio. El proceso de instalación en sí dura aproximadamente 2 horas, dependiendo de las características de tu domicilio.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-question">
+                    <div class="flex justify-between items-center py-3 cursor-pointer">
+                        <h3 class="text-lg font-semibold">¿El precio promocional es permanente?</h3>
+                        <i class="fas fa-chevron-down text-orange-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Sí, el precio promocional se mantiene durante todo el tiempo que mantengas contratado el servicio. No hay incrementos sorpresa ni costos ocultos. El precio que ves es el que pagas.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-question">
+                    <div class="flex justify-between items-center py-3 cursor-pointer">
+                        <h3 class="text-lg font-semibold">¿Puedo cambiar de plan después de contratar?</h3>
+                        <i class="fas fa-chevron-down text-orange-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Sí, puedes actualizar o cambiar tu plan en cualquier momento. El cambio se hará efectivo en tu siguiente ciclo de facturación. Contáctanos a través de nuestro servicio al cliente para solicitar el cambio.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-question">
+                    <div class="flex justify-between items-center py-3 cursor-pointer">
+                        <h3 class="text-lg font-semibold">¿Qué pasa si no hay cobertura en mi zona?</h3>
+                        <i class="fas fa-chevron-down text-orange-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Si actualmente no tenemos cobertura en tu zona, tomaremos tus datos y te contactaremos tan pronto como nuestro servicio esté disponible en tu ubicación. Estamos en constante expansión para llegar a más zonas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Llamado a la Acción -->
+    <section class="py-16 px-4 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="w-full md:w-2/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4">¡No esperes más para disfrutar de internet de alta velocidad!</h2>
+                    <p class="text-lg">Aprovecha nuestra oferta exclusiva por tiempo limitado. Instalación gratis y sin costo de activación.</p>
+                </div>
+                <div class="w-full md:w-1/3 flex justify-center md:justify-end">
+                    <button type="button" class="bg-white text-orange-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all">¡Solicitar ahora!</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 WIN Fibra Óptica. Todos los derechos reservados.</p>
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">WIN Fibra Óptica</h3>
+                    <p class="text-gray-400">Internet de alta velocidad con tecnología de fibra óptica para hogares y empresas.</p>
+                    <div class="flex mt-4 space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Planes</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Plan Básico</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Plan Premium</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Plan Ultra</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Planes Empresariales</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Soporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Centro de Ayuda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contacto</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Preguntas Frecuentes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Estado del Servicio</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Términos de Servicio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Política de Cookies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Libro de Reclamaciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-sm text-gray-400">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p>&copy; 2024 WIN Fibra Óptica. Todos los derechos reservados.</p>
+                    <div class="mt-4 md:mt-0">
+                        <img src="/api/placeholder/200/30" alt="Medios de pago" class="h-6">
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-
-    <!-- Script -->
+    
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/51924851312?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Internet%20Fibra%20%C3%B3ptica%20de%20WIN" class="floating-whatsapp pulse">
+        <i class="fab fa-whatsapp text-xl"></i>
+        <span>Chatear ahora</span>
+    </a>
+    
+    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Capturar parámetros de la URL
             const urlParams = new URLSearchParams(window.location.search);
             document.getElementById('source').value = urlParams.get('source') || '';
             document.getElementById('advisor').value = urlParams.get('advisor') || '';
             document.getElementById('location').value = urlParams.get('location') || '';
-
+            
+            // Gestión del formulario
             document.getElementById('contactForm').addEventListener('submit', function (e) {
                 e.preventDefault();
-
+                
                 const formData = new FormData(this);
                 const data = {
                     timestamp: new Date().toISOString(),
                     name: formData.get('name'),
                     phone: formData.get('phone'),
+                    distrito: formData.get('distrito'),
                     source: formData.get('source'),
                     advisor: formData.get('advisor'),
                     location: formData.get('location')
                 };
-
+                
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbyWqjppt1SD6NaDZhGyTodY4hNN2Qqb434Zj1U1Wc8IY_k02i4hIhZ4efouoaOApsoN_Q/exec';
-
-                console.log('Enviando datos:', data);
-
+                
                 fetch(scriptURL, {
                     method: 'POST',
                     body: JSON.stringify(data),
@@ -172,13 +888,57 @@
                     }
                 })
                 .then(response => {
-                    console.log('Respuesta recibida:', response);
-                    alert('¡Gracias! Nos pondremos en contacto contigo pronto.');
+                    alert('¡Gracias por contactarnos! Un asesor se comunicará contigo en breve.');
                     this.reset();
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     alert('Hubo un error al enviar tus datos. Por favor, intenta nuevamente.');
+                });
+            });
+            
+            // Contador regresivo
+            function updateCountdown() {
+                const now = new Date();
+                const targetDate = new Date();
+                targetDate.setDate(now.getDate() + 2);
+                targetDate.setHours(23, 59, 59, 0);
+                
+                const diff = targetDate - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Toggle para FAQs
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                const header = question.querySelector('div');
+                header.addEventListener('click', () => {
+                    question.classList.toggle('active');
+                    const icon = header.querySelector('i');
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                });
+            });
+            
+            // Botones CTA en planes
+            const ctaButtons = document.querySelectorAll('.btn-primary');
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelector('.form-container').scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
         });
